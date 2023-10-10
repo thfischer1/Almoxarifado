@@ -1,59 +1,59 @@
-#include <stdio.h> 					//biblioteca de comunicação com o usuário
-#include <stdlib.h> 				//biblioteca de alocação de espaço em memória
-#include <locale.h> 				//biblioteca de alocações de texto por região
-#include <string.h> 				//biblioteca responsável por cuidar das string
+#include <stdio.h> 					//biblioteca de comunicaÃ§Ã£o com o usuÃ¡rio
+#include <stdlib.h> 					//biblioteca de alocaÃ§Ã£o de espaÃ§o em memÃ³ria
+#include <locale.h> 					//biblioteca de alocaÃ§Ãµes de texto por regiÃ£o
+#include <string.h> 					//biblioteca responsÃ¡vel por cuidar das string
 
-int registro()						//Função responsávável por cadastrar os usuários no sistema
+int registro()						//FunÃ§Ã£o responsÃ¡vÃ¡vel por cadastrar os usuÃ¡rios no sistema
 {
-									//Início criação de variáveis/string
+							//InÃ­cio criaÃ§Ã£o de variÃ¡veis/string
 	char arquivo[40];
 	char ficha[40];
-	char produto[40];				//CHAR - Contabiliza a quantidade de caracteres que serão utilizados
+	char produto[40];				//CHAR - Contabiliza a quantidade de caracteres que serÃ£o utilizados
 	char descricao[40];
 	char quantidade[40];
-									//Final da criação de variáveis/string
+							//Final da criaÃ§Ã£o de variÃ¡veis/string
 					
-	printf("Digite a ficha a ser cadastrada:  "); //Coletando informação do usuário
+	printf("Digite a ficha a ser cadastrada:  ");   //Coletando informaÃ§Ã£o do usuÃ¡rio
 	scanf("%s",ficha);				//%s refere-se a string
 	
-	strcpy(arquivo, ficha); 		//Responsável por copiar os valores das string
+	strcpy(arquivo, ficha); 			//ResponsÃ¡vel por copiar os valores das string
 	
 	FILE *file;  					//Criando o arquivo
-	file = fopen(arquivo, "w");  	//Cria o arquivo e "w" = Write (Escrever)
-	fprintf(file, ficha); 			//Salvo o valor da variável
+	file = fopen(arquivo, "w");  			//Cria o arquivo e "w" = Write (Escrever)
+	fprintf(file, ficha); 				//Salvo o valor da variÃ¡vel
 	fclose(file); 					//Fecha o arquivo
 	
-	file = fopen(arquivo, "a");		//Abre o arquivo criado  "a" = Atualizar
-	fprintf(file, ",");				//Separação de caracteres
+	file = fopen(arquivo, "a");			//Abre o arquivo criado  "a" = Atualizar
+	fprintf(file, ",");				//SeparaÃ§Ã£o de caracteres
 	fclose(file); 					//Fecha o arquivo
 	
 	printf("Digite o produto a ser cadastrado:  ");
 	scanf("%s",produto);
 	
-	file = fopen(arquivo, "a");  	//Abre o arquivo criado
-	fprintf(file,produto);			//Registra no arquivo a informação solicitada
+	file = fopen(arquivo, "a");  			//Abre o arquivo criado
+	fprintf(file,produto);				//Registra no arquivo a informaÃ§Ã£o solicitada
 	fclose(file);  					//Fecha o arquivo
 	
-	file = fopen(arquivo, "a");  	//Abre o arquivo criado
-	fprintf(file, ",");				//Separação de caracteres
+	file = fopen(arquivo, "a");  			//Abre o arquivo criado
+	fprintf(file, ",");				//SeparaÃ§Ã£o de caracteres
 	fclose(file);  					//Fecha o arquivo
 	
-	printf("Digite a descrição a ser cadastrada:  ");
+	printf("Digite a descriÃ§Ã£o a ser cadastrada:  ");
 	scanf("%s", descricao);
 	
-	file = fopen(arquivo, "a");  	//Abre o arquivo criado
-	fprintf(file,descricao);		//Registra no arquivo a informação solicitada
+	file = fopen(arquivo, "a");  			//Abre o arquivo criado
+	fprintf(file,descricao);			//Registra no arquivo a informaÃ§Ã£o solicitada
 	fclose(file);  					//Fecha o arquivo
 	
-	file = fopen(arquivo, "a");  	//Abre o arquivo criado
-	fprintf(file, ",");				//Separação de caracteres
+	file = fopen(arquivo, "a");  			//Abre o arquivo criado
+	fprintf(file, ",");				//SeparaÃ§Ã£o de caracteres
 	fclose(file);  					//Fecha o arquivo
 	
 	printf("Digite a quantidade a ser cadastrada:  ");
 	scanf("%s", quantidade);
 	
-	file = fopen(arquivo, "a");  	//Abre o arquivo criado
-	fprintf(file,quantidade);		//Registra no arquivo a informação solicitada
+	file = fopen(arquivo, "a");  			//Abre o arquivo criado
+	fprintf(file,quantidade);			//Registra no arquivo a informaÃ§Ã£o solicitada
 	fclose(file);  					//Fecha o arquivo
 		
 	system("pause");
@@ -61,7 +61,7 @@ int registro()						//Função responsávável por cadastrar os usuários no sistema
 	
 int consulta()			
 {
-	setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem
+	setlocale(LC_ALL, "Portuguese"); 		//Definindo a Linguagem
 	
 	char ficha[40];
 	char conteudo[200];
@@ -70,16 +70,16 @@ int consulta()
 	scanf("%s",ficha);
 	
 	FILE *file; 					//Consulta arquivo existente
-	file = fopen(ficha,"r"); 		// Vai ler o arquivo para consulta  "r" = Read (ler)
+	file = fopen(ficha,"r"); 			// Vai ler o arquivo para consulta  "r" = Read (ler)
 	
 	if(file == NULL)
 	{
-			printf("\nNão foi possível abrir o arquivo, não localizado!.\n\n");
+			printf("\nNÃ£o foi possÃ­vel abrir o arquivo, nÃ£o localizado!.\n\n");
 	}
 	
 	while(fgets(conteudo, 200, file) != NULL)
 	{
-		printf("\nEssas são as informações do produto: ");
+		printf("\nEssas sÃ£o as informaÃ§Ãµes do produto: ");
 		printf("%s", conteudo);
 		printf("\n\n");
 	}
@@ -92,7 +92,7 @@ int deletar()
 {
 	char ficha[40]; 				//String produto
 	
-	printf("Digite o número da ficha a ser deletado: ");
+	printf("Digite o nÃºmero da ficha a ser deletado: ");
 	scanf("%s",ficha);
 	
 	remove(ficha);
@@ -102,7 +102,7 @@ int deletar()
 	
 	if(file == NULL)				//Verifica se a Ficha digitada existe no banco de daos. (Caso n exista, exibe mensagem de erro)
 	{
-		printf("O Ficha não se encontra no sistema.\n");
+		printf("O Ficha nÃ£o se encontra no sistema.\n");
 		system("pause");
 	}
 	
@@ -112,32 +112,32 @@ int deletar()
 
 int main()
 	{
-	int opcao=0; 					//Definindo variáveis
+	int opcao=0; 					//Definindo variÃ¡veis
 	int laco=1;
 	
 	for(laco=1;laco=1;)	
 	{
 	
-		system("cls");					//Responsável por limpar a tela
+		system("cls");				//ResponsÃ¡vel por limpar a tela
 		
-		setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem
+		setlocale(LC_ALL, "Portuguese"); 	//Definindo a Linguagem
 	
-		printf("«««««« Estoque Almoxarifado »»»»»»\n\n"); //Início do menu
-		printf("Escolha a opção desejada do menu: \n\n");
+		printf("Â«Â«Â«Â«Â«Â« Estoque Almoxarifado Â»Â»Â»Â»Â»Â»\n\n"); //InÃ­cio do menu
+		printf("Escolha a opÃ§Ã£o desejada do menu: \n\n");
 		printf("\t1 - Registrar Produto\n");
 		printf("\t2 - Consultar Produto\n");
 		printf("\t3 - Deletar Produto\n\n");
 		printf("\t4 - Sair do sistema\n\n");
-		printf("Opção: "); //Fim do menu
+		printf("OpÃ§Ã£o: "); 			//Fim do menu
 		
-		scanf("%d", &opcao); //Armazenando a escolha do usuário
+		scanf("%d", &opcao);			//Armazenando a escolha do usuÃ¡rio
 	
 		system("cls");
 		
-		switch(opcao) //Início da Seleção
+		switch(opcao) 				//InÃ­cio da SeleÃ§Ã£o
 		{
 			case 1:
-			registro(); //Chamada de funções
+			registro(); 			//Chamada de funÃ§Ãµes
 			break;
 			
 			case 2:
@@ -154,10 +154,10 @@ int main()
 			break;
 			
 			default:
-			printf("Essa opção não existe :( \n\n");
+			printf("Essa opÃ§Ã£o nÃ£o existe :( \n\n");
 			system("pause");
 			break; 
-		}			//Fim da Seleção	
+		}					//Fim da SeleÃ§Ã£o	
 	}
 }
 
